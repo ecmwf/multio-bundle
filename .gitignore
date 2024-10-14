@@ -1,0 +1,6 @@
+ecbundle
+source
+build
+install
+venv
+slurm*.out
