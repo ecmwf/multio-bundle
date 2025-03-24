@@ -1,79 +1,85 @@
 ---
 ### Bundle
 
-name    : multio-bundle
-version : 0.1.0.0
+name    : multio-develop-bundle
+version : 0.3.0
 cmake   : >
-    ENABLE_FORTRAN=OFF
-
-build_type: RelWithDebInfo
+    ECBUILD_INSTALL_LIBRARY_HEADERS=OFF
+    ECBUILD_INSTALL_FORTRAN_MODULES=OFF
+    CMAKE_LINK_DEPENDS_NO_SHARED=ON
 
 projects :
+
     - ecbuild :
-        git     : ${BITBUCKET}/ecsdk/ecbuild
+        git     : git@github.com:ecmwf/ecbuild
         version : develop
         bundle  : false
 
     - eccodes :
-        git     : ${BITBUCKET}/eccodes/eccodes
-        version : 2.33.0
+        git     : git@github.com:ecmwf/eccodes
+        version : develop
         cmake   : >
             ENABLE_ECCODES_THREADS=ON
             ENABLE_NETCDF=OFF
+            ENABLE_FORTRAN=ON
             ENABLE_MEMFS=ON
-            ENABLE_INSTALL_ECCODES_DEFINITIONS=OFF
-            ENABLE_INSTALL_ECCODES_SAMPLES=OFF
+            ECCODES_INSTALL_EXTRA_TOOLS=ON
+            ECCODES_ENABLE_PYTHON2=OFF
+            ECCODES_ENABLE_AEC=ON
 
     - eckit :
-        git     : ${BITBUCKET}/ecsdk/eckit
-        version : 1.27.0
+        git     : git@github.com:ecmwf/eckit
+        version : develop
         cmake   : >
             ENABLE_VIENNACL=OFF
             ENABLE_EIGEN=OFF
             ENABLE_ARMADILLO=OFF
             ENABLE_CUDA=OFF
+            ENABLE_SANDBOX=OFF
             ENABLE_MPI=ON
 
+    - fckit :
+        git     : git@github.com:ecmwf/fckit
+        version : develop
+        require : eckit
+        cmake   : FCKIT_ENABLE_FINAL=OFF
+
     - metkit :
-        git     : ${BITBUCKET}/ecsdk/metkit
-        version : 1.11.2
+        git     : git@github.com:ecmwf/metkit
+        version : develop
         require : eckit
 
     - fdb5 :
-        git     : ${BITBUCKET}/mars/fdb5
-        version : 5.11.28
-        require : eccodes eckit metkit
-
-    - transi :
-        git     : ${BITBUCKET}/atlas/transi
+        git     : git@github.com:ecmwf/fdb
         version : develop
+        require : eckit metkit
+        cmake   : >
+            ENABLE_FDB_TOOLS=ON
 
     - atlas :
-        git     : ${BITBUCKET}/atlas/atlas
-        version : 0.36.0
-        require : transi eckit
+        git     : git@github.com:ecmwf/atlas
+        version : develop
+        require : eckit
+        cmake   : ENABLE_TESSELATION=OFF ENABLE_TRANS=OFF ENABLE_CLANG_TIDY=OFF ENABLE_GRIDTOOLS_STORAGE=OFF
 
     - mir :
-        git     : ${BITBUCKET}/mir/mir
-        version : 1.18.1
-        require : atlas eckit eccodes
+        git     : git@github.com:ecmwf/mir
+        version : develop
+        require : atlas
+
+    - pgen :
+        git     : ${BITBUCKET}/prodgen/pgen
+        version : develop
+        require : eckit metkit
 
     - multio :
-        git     : https://github.com/ecmwf/multio.git
-        require : atlas eckit eccodes metkit mir fdb5 
+        git     : git@github.com:ecmwf/multio
         version : develop
         cmake   : >
-            ENABLE_OUTPUT_MANAGER=OFF
+            ENABLE_MULTIO_SERVER=ON
+            ENABLE_LEGACY_IFSIO=ON
 
-options:
-    - with-experimental :
-        help  : Enable experimental code
-        cmake : ENABLE_EXPERIMENTAL=ON
-
-    - with-sandbox :
-        help  : Enable sandbox code
-        cmake : ENABLE_SANDBOX=ON
-
-    - with-python :
-        help  : Enable python bindings
-        cmake : ENABLE_PYTHON=ON
+    - atlas-orca :
+        git     : git@github.com:ecmwf/atlas-orca
+        version : develop
+        require : eckit
