@@ -47,3 +47,4 @@ export LD_RUN_PATH=$LD_LIBRARY_PATH
 
 # Restore tracing to stored setting
 { if [[ -n "$tracing_" ]]; then set -x; else set +x; fi } 2>/dev/null
+

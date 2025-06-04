@@ -37,7 +37,7 @@ module_load Eigen/3.4
 module_load libaec/1.0.6-cpeCray-22.08 # TODO: Gribjump will need 1.1.1
 module_load Boost/1.79.0-cpeCray-22.08
 module_load ncurses/6.2-cpeCray-22.08
-module_load buildtools/22.08-minimal
+module_load buildtools/22.08-minimal 
                              # single precision bit reproducibility
 
 module list 2>&1

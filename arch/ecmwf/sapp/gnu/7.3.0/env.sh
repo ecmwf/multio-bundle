@@ -58,3 +58,4 @@ export http_proxy="http://slb-proxy-web.ecmwf.int:3333/"
 
 # Restore tracing to stored setting
 if [[ -n "$tracing_" ]]; then set -x; else set +x; fi
+
