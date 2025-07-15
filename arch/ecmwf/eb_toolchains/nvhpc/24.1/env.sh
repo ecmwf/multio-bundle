@@ -33,7 +33,7 @@ export CXX=nvc++
 
 # Don't load these modules if env.sh is used as part of the IFS runtime environment - only the modules above are required
 if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
-  module_load python3/3.10.10-01
+  module_load python3/3.11.8-01
   module_load FFTW/3.3.10-NVHPC-24.1-CUDA-12.3.0
   module_load netCDF-Fortran/4.5.2-NVHPC-24.1-CUDA-12.3.0
   module load netCDF/4.7.4-NVHPC-24.1-CUDA-12.3.0

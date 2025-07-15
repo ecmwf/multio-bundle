@@ -27,7 +27,7 @@ module_load intel-mkl/19.0.5
 
 # Don't load these modules if env.sh is used as part of the IFS runtime environment - only the modules above are required
 if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
-  module_load python3/3.10.10-01
+  module_load python3/3.11.8-01
   module_load fftw/3.3.10
   module_load netcdf4/4.9.1
   module_load hdf5/1.12.2

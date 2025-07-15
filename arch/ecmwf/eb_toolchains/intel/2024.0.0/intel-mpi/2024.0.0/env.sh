@@ -22,7 +22,6 @@ module_purge() {
 # Load modules
 module use /perm/rdci/easybuild/installed_apps/modules/all
 
-module_purge
 module_load prgenv/intel
 module_unload intel
 module_load intel-compilers/2024.0.0
@@ -47,14 +46,14 @@ export I_MPI_FC=ifort
 # Don't load these modules if env.sh is used as part of the IFS runtime environment - only the modules above are required
 if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load CMake/3.27.6-GCCcore-13.2.0
-  module_load python3/3.10.10-01
+  module_load python3/3.11.8-01
   module_load FFTW/3.3.10-iimpi-2024.0
   module_load netCDF-Fortran/4.5.2-iimpi-2024.0
   module_load HDF5/1.10.7-iimpi-2024.0
   module_load Eigen/3.4.0-GCCcore-13.2.0
   module_load ninja/1.10.0
   module_load fcm/2019.05.0
-  module_load aec/1.0.6
+  module_load aec/1.1.1
 fi
 
 # Setting required for bit reproducibility with Intel MKL:
