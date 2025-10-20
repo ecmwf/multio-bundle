@@ -4,6 +4,7 @@
 name    : multio-develop-bundle
 version : 0.3.0
 cmake   : >
+    ENABLE_BUNDLED_DEPENDENCIES=ON
     ECBUILD_INSTALL_LIBRARY_HEADERS=OFF
     ECBUILD_INSTALL_FORTRAN_MODULES=OFF
     CMAKE_LINK_DEPENDS_NO_SHARED=ON
@@ -14,6 +15,11 @@ projects :
         git     : git@github.com:ecmwf/ecbuild
         version : develop
         bundle  : false
+
+    - cxx-dependnecies:
+        git: git@github.com:ecmwf/cxx-dependencies
+        version: master
+        submodules: true
 
     - eccodes :
         git     : git@github.com:ecmwf/eccodes
