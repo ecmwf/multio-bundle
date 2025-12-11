@@ -3,7 +3,12 @@
 # Store tracing and disable (module is *way* too verbose)
 { tracing_=${-//[^x]/}; set +x; } 2>/dev/null
 
+toload=""
 module_load() {
+  echo "+ module load $*"
+  toload="$toload $*"
+}
+module_load_now() {
   echo "+ module load $*"
   module load $*
 }
@@ -22,7 +27,8 @@ module_purge() {
 # Load modules
 module use /perm/rdci/easybuild/installed_apps/modules/all
 
-module_load prgenv/intel
+
+module_load_now prgenv/intel
 module_unload intel
 module_load intel-compilers/2024.0.0
 module_load impi/2021.11.0-intel-compilers-2024.0.0
@@ -55,6 +61,9 @@ if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load fcm/2019.05.0
   module_load aec/1.1.1
 fi
+
+# run all the module loads in one go:
+module load $toload
 
 # Setting required for bit reproducibility with Intel MKL:
 export MKL_CBWR=AUTO,STRICT
