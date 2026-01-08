@@ -78,6 +78,8 @@ projects :
         cmake   : >
             ENABLE_MULTIO_SERVER=ON
             ENABLE_LEGACY_IFSIO=ON
+            ENABLE_MULTIO_BUILD_TOOLS=OFF
+            ENABLE_GRIB1_TO_GRIB2=ON
 
     - atlas-orca :
         git     : git@github.com:ecmwf/atlas-orca
