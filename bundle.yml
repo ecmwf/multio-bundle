@@ -68,7 +68,7 @@ projects :
         require : atlas
 
     - pgen :
-        git     : ${BITBUCKET}/prodgen/pgen
+        git     : git@github.com:ecmwf/pgen
         version : master
         require : eckit metkit
 
