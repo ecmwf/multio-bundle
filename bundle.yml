@@ -37,6 +37,7 @@ projects :
             ENABLE_CUDA=OFF
             ENABLE_SANDBOX=OFF
             ENABLE_MPI=ON
+            ENABLE_ECKIT_GEO=OFF
 
     - fckit :
         git     : git@github.com:ecmwf/fckit
@@ -46,7 +47,7 @@ projects :
 
     - metkit :
         git     : git@github.com:ecmwf/metkit
-        version : master
+        version : feature/port-mars2grib
         require : eckit
 
     - fdb5 :
@@ -62,24 +63,10 @@ projects :
         require : eckit
         cmake   : ENABLE_TESSELATION=OFF ENABLE_TRANS=OFF ENABLE_CLANG_TIDY=OFF ENABLE_GRIDTOOLS_STORAGE=OFF
 
-    - mir :
-        git     : git@github.com:ecmwf/mir
-        version : master
-        require : atlas
-
-    - pgen :
-        git     : git@github.com:ecmwf/pgen
-        version : master
-        require : eckit metkit
-
     - multio :
         git     : git@github.com:ecmwf/multio
-        version : master
+        version : feature/metkit-grib2-encoder
         cmake   : >
             ENABLE_MULTIO_SERVER=ON
             ENABLE_LEGACY_IFSIO=ON
 
-    - atlas-orca :
-        git     : git@github.com:ecmwf/atlas-orca
-        version : master
-        require : eckit
