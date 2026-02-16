@@ -78,6 +78,8 @@ projects :
         cmake   : >
             ENABLE_MULTIO_SERVER=ON
             ENABLE_LEGACY_IFSIO=ON
+            ENABLE_MAESTRO=ON
+            MAESTRO_PATH=../maestro-core/install
 
     - atlas-orca :
         git     : git@github.com:ecmwf/atlas-orca

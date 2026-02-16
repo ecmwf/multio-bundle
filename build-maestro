@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+rm -rf maestro-core
+git clone https://gitlab.com/maestro-data/maestro-core.git maestro-core
+cd maestro-core
+autoreconf -ivf
+./configure --prefix=${PWD}/install
+make -j8
+make install
+cd ..
+
