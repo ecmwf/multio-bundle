@@ -34,17 +34,17 @@ module_purge() {
 
 
 # Load modules
-module_load LUMI/24.03
+module_load LUMI/25.03
 module_load partition/C
-module_load cpeCray/24.03
+module_load cpeCray/25.03
 module_load cray-mpich/8.1.29
-module_load libaec/1.0.6-cpeCray-24.03
+module_load libaec/1.1.4-cpeCray-25.03
 module_load craype-x86-milan
 if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load Eigen/3.4
-  module_load Boost/1.83.0-cpeCray-24.03
-  module_load ncurses/6.4-cpeCray-24.03
-  module_load buildtools/24.03
+  module_load Boost/1.88.0-cpeGNU-25.03
+  module_load ncurses/6.5-cpeCray-25.03
+  module_load buildtools/25.03
   module_load cray-python/3.11.7
 fi
 
@@ -53,7 +53,7 @@ module_load cray-dsmml/0.3.0
 
 ### Handling of "magic" cray modules
 # 1) Load the cray modules
-module_load cray-libsci/24.03.0
+module_load cray-libsci/25.03.0
 module_load cray-fftw/3.3.10.7
 module_load cray-hdf5/1.12.2.11
 module_load cray-netcdf/4.9.0.11
