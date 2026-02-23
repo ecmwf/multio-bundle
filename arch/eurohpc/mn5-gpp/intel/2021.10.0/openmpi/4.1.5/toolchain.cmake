@@ -1,0 +1,8 @@
+set(FC "/gpfs/apps/MN5/GPP/OPENMPI/4.1.5/INTEL/bin/mpifort")
+set(CC "/gpfs/apps/MN5/GPP/OPENMPI/4.1.5/INTEL/bin/mpicc")
+set(CXX "/gpfs/apps/MN5/GPP/OPENMPI/4.1.5/INTEL/bin/mpicxx")
+set(CMAKE_Fortran_FLAGS "-O3 -xCORE-AVX512 -qopt-zmm-usage=high")
+set(CMAKE_C_FLAGS "-O3 -xCORE-AVX512 -qopt-zmm-usage=high")
+set(CMAKE_CXX_FLAGS "-O3 -xCORE-AVX512 -qopt-zmm-usage=high")
+set(FCKIT_VENV_WHEEL_DIR "/gpfs/scratch/ehpc01/ihadade/raps-deps")
+set(ENABLE_FCKIT_VENV_OFFLINE ON CACHE STRING "")
