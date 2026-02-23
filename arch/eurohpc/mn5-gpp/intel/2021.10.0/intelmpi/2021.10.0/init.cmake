@@ -1,0 +1,2 @@
+set( ENABLE_RETRIEVE_ORCA_DATA OFF CACHE BOOL "Do not download ORCA data" )
+set( ENABLE_INSTALL_ORCA_DATA OFF CACHE BOOL "Do not install ORCA data" )
