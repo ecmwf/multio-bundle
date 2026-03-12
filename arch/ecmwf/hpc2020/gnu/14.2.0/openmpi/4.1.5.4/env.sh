@@ -41,7 +41,7 @@ if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load cmake/3.31.6
   module_load ninja/1.12.1
   module_load fcm/2021.05.0
-  module_load aec/1.1.3
+  module_load aec/1.1.4
 fi
 
 # run all the module loads in one go:
