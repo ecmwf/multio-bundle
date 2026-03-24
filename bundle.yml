@@ -44,6 +44,11 @@ projects :
         require : eckit
         cmake   : FCKIT_ENABLE_FINAL=OFF
 
+    - ecflow-light :
+        git     : git@github.com:ecmwf/ecflow-light
+        version : develop
+        require : eckit
+
     - metkit :
         git     : git@github.com:ecmwf/metkit
         version : develop
@@ -78,6 +83,7 @@ projects :
         cmake   : >
             ENABLE_MULTIO_SERVER=ON
             ENABLE_LEGACY_IFSIO=ON
+            ENABLE_ECFLOW_LIGHT=ON
 
     - atlas-orca :
         git     : git@github.com:ecmwf/atlas-orca
