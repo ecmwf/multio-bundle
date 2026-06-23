@@ -72,11 +72,6 @@ projects :
         version : master
         require : atlas
 
-    - pgen :
-        git     : git@github.com:ecmwf/pgen
-        version : master
-        require : eckit metkit
-
     - multio :
         git     : git@github.com:ecmwf/multio
         version : master
