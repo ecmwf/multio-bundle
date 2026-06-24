@@ -1,0 +1,24 @@
+multio-bundle
+=============
+
+Copyright 1996- ECMWF
+
+This product is developed by the
+
+  Development Section, European Centre for Medium-Range Weather Forecasts (ECMWF) - http://www.ecmwf.int
+
+This bundle aggregates the following ECMWF open-source projects (each with their own LICENSE and NOTICE files):
+
+- ecbuild
+- eccodes
+- eckit
+- fckit
+- ecflow-light
+- metkit
+- fdb5
+- atlas
+- mir
+- multio
+- atlas-orca
+
+No external third-party code is directly included in this bundle repository.
