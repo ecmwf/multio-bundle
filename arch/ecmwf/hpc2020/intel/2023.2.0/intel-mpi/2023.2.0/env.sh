@@ -3,12 +3,7 @@
 # Store tracing and disable (module is *way* too verbose)
 { tracing_=${-//[^x]/}; set +x; } 2>/dev/null
 
-toload=""
 module_load() {
-  echo "+ module load $*"
-  toload="$toload $*"
-}
-module_load_now() {
   echo "+ module load $*"
   module load $*
 }
@@ -42,11 +37,8 @@ if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load cmake/3.25.2
   module_load ninja/1.10.0
   module_load fcm/2019.05.0
-  module_load aec/1.1.4
+  module_load aec/1.1.2
 fi
-
-# run all the module loads in one go:
-module load $toload
 
 # Setting required for bit reproducibility with Intel MKL:
 export MKL_CBWR=AUTO,STRICT

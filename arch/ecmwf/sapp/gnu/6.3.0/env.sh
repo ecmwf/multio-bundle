@@ -3,12 +3,7 @@
 # Store tracing and disable (module is *way* too verbose)
 { tracing_=${-//[^x]/}; set +x; } 2>/dev/null
 
-toload=""
 module_load() {
-  echo "+ module load $1"
-  toload="$toload $1"
-}
-module_load_now() {
   echo "+ module load $1"
   module load $1
 }
@@ -52,10 +47,6 @@ module_load hdf5/1.8.17
 module_load fcm/2015.03.0
 module_load python3/3.6.8-01
 # module_load proj4
-
-# run all the module loads in one go:
-module load $toload
-
 
 module list 2>&1
 

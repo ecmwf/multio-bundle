@@ -22,7 +22,17 @@ module_unload() {
 }
 
 # Unload to be certain
-module --force purge
+module_purge() {
+  echo "+ module purge"
+  module --force purge
+
+  # Reload the basic LUMI (system settings) module.
+  module_load init-lumi
+}
+
+# Unload all modules to be certain
+[[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]] && module_purge
+
 
 # Load modules
 module_load LUMI/22.08
@@ -32,13 +42,15 @@ module_load cray-mpich/8.1.23
 module_load cray-fftw/3.3.10.1
 module_load cray-hdf5/1.12.1.5
 module_load cray-netcdf/4.8.1.5
-module_load cray-python/3.9.12.1
-module_load Eigen/3.4
 module_load libaec/1.0.6-cpeCray-22.08 # TODO: Gribjump will need 1.1.1
-module_load Boost/1.79.0-cpeCray-22.08
-module_load ncurses/6.2-cpeCray-22.08
-module_load buildtools/22.08-minimal 
-                             # single precision bit reproducibility
+
+if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
+  module_load cray-python/3.9.12.1
+  module_load Eigen/3.4
+  module_load Boost/1.79.0-cpeCray-22.08
+  module_load ncurses/6.2-cpeCray-22.08
+  module_load buildtools/22.08-minimal
+fi
 
 module list 2>&1
 set -x

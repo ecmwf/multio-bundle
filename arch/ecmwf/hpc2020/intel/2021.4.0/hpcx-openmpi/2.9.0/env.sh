@@ -3,12 +3,7 @@
 # Store tracing and disable (module is *way* too verbose)
 { tracing_=${-//[^x]/}; set +x; } 2>/dev/null
 
-toload=""
 module_load() {
-  echo "+ module load $*"
-  toload="$toload $*"
-}
-module_load_now() {
   echo "+ module load $*"
   module load $*
 }
@@ -45,8 +40,7 @@ if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load proj/9.3.1
 fi
 
-# run all the module loads in one go:
-module load $toload
+export TBBMALLOC_DIR=${TBBROOT}/lib/intel64/gcc4.8
 
 # Setting required for bit reproducibility with Intel MKL:
 export MKL_CBWR=AUTO,STRICT
