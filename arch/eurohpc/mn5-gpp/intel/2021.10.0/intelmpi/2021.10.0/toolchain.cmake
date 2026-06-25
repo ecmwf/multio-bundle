@@ -1,5 +1,0 @@
-set(CMAKE_Fortran_COMPILER "mpiifort")
-set(CMAKE_C_COMPILER "mpiicc")
-set(CMAKE_CXX_COMPILER "mpiicpc")
-set(INTEL_OPT_FLAGS "-xCORE-AVX512 -qopt-zmm-usage=high -fimf-use-svml=true")
-set(FCKIT_VENV_WHEEL_DIR "/gpfs/scratch/ehpc01/ihadade/raps-deps")

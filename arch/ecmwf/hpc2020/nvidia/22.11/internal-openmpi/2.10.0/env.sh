@@ -3,12 +3,7 @@
 # Store tracing and disable (module is *way* too verbose)
 { tracing_=${-//[^x]/}; set +x; } 2>/dev/null
 
-toload=""
 module_load() {
-  echo "+ module load $*"
-  toload="$toload $*"
-}
-module_load_now() {
   echo "+ module load $*"
   module load $*
 }
@@ -28,7 +23,7 @@ module_purge() {
 module_load prgenv/nvidia
 module_load nvidia/22.11
 module_load intel-mkl/19.0.5
-module_load python3/3.10.10-01
+module_load python3/3.11.10-01
 
 # Don't load these modules if env.sh is used as part of the IFS runtime environment - only the modules above are required
 if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
@@ -42,9 +37,6 @@ if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load fcm/2019.05.0
   module_load aec/1.0.4
 fi
-
-# run all the module loads in one go:
-module load $toload
 
 export FC=nvfortran
 export CC=nvc

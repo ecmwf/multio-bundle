@@ -3,12 +3,7 @@
 # Store tracing and disable (module is *way* too verbose)
 { tracing_=${-//[^x]/}; set +x; } 2>/dev/null
 
-toload=""
 module_load() {
-  echo "+ module load $*"
-  toload="$toload $*"
-}
-module_load_now() {
   echo "+ module load $*"
   module load $*
 }
@@ -32,7 +27,7 @@ module_load intel-mkl/19.0.5
 
 # Don't load these modules if env.sh is used as part of the IFS runtime environment - only the modules above are required
 if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
-  module_load python3/3.10.10-01
+  module_load python3/3.11.8-01
   module_load fftw/3.3.10
   module_load netcdf4/4.9.1
   module_load hdf5/1.12.2
@@ -42,9 +37,6 @@ if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load fcm/2019.05.0
   module_load aec/1.1.4
 fi
-
-# run all the module loads in one go:
-module load $toload
 
 # Setting required for bit reproducibility with Intel MKL:
 export MKL_CBWR=AUTO,STRICT

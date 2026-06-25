@@ -3,12 +3,7 @@
 # Store tracing and disable (module is *way* too verbose)
 { tracing_=${-//[^x]/}; set +x; } 2>/dev/null
 
-toload=""
 module_load() {
-  echo "+ module load $*"
-  toload="$toload $*"
-}
-module_load_now() {
   echo "+ module load $*"
   module load $*
 }
@@ -45,9 +40,6 @@ if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load aec/1.1.4
 fi
 
-# run all the module loads in one go:
-module load $toload
-
 # Setting required for bit reproducibility with Intel MKL:
 export MKL_CBWR=AUTO,STRICT
 
@@ -56,3 +48,5 @@ export LD_RUN_PATH=$LD_LIBRARY_PATH
 
 # Restore tracing to stored setting
 { if [[ -n "$tracing_" ]]; then set -x; else set +x; fi } 2>/dev/null
+
+export ECBUILD_TOOLCHAIN="./toolchain.cmake"

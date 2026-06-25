@@ -45,7 +45,7 @@ if [[ ${IFS_RUNTIME_ENV:-unset} == "unset" ]]; then
   module_load Boost/1.82.0-cpeCray-23.09
   module_load ncurses/6.4-cpeCray-23.09
   module_load buildtools/23.09
-  module_load cray-python/3.9.13.1 ECBUNDLE_CONFIGURE_ONLY
+  module_load cray-python/3.11.7 ECBUNDLE_CONFIGURE_ONLY
 fi
 
 module_load craype-network-ofi
@@ -58,7 +58,7 @@ module_load cray-fftw/3.3.10.3
 module_load cray-hdf5/1.12.2.3
 module_load cray-netcdf/4.9.0.3
 # 2) Store variables to locate the packages
-export CRAY_LIBSCI=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_cray.so
+export CRAY_LIBSCI=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_cray_mp.so
 _FFTW_ROOT=${FFTW_ROOT}
 _HDF5_ROOT=${CRAY_HDF5_PREFIX}
 _NETCDF_ROOT=${CRAY_NETCDF_PREFIX}
@@ -79,9 +79,6 @@ export CC=cc
 export CXX=CC
 export FC=ftn
 export CRAY_ADD_RPATH=yes
-export LIBSCI_ARCH_OVERRIDE=broadwell
-  # This is required to work around SIGSEGV in ectrans' SGEMM calls, which
-  # occur when "rome" or "milan" are used (backtrace points to openblas_sgemm__naples)
 
 ### Print some exported variables
 echo "+ export FFTW_ROOT=${FFTW_ROOT}"
@@ -93,7 +90,6 @@ echo "+ export CC=${CC}"
 echo "+ export CXX=${CXX}"
 echo "+ export FC=${FC}"
 echo "+ export CRAY_ADD_RPATH=${CRAY_ADD_RPATH}"
-echo "+ export LIBSCI_ARCH_OVERRIDE=${LIBSCI_ARCH_OVERRIDE}"
 
 module list 2>&1
 
