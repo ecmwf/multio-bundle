@@ -17,7 +17,7 @@ projects :
 
     - eckit :
         git     : git@github.com:ecmwf/eckit
-        version : master
+        version : develop
         cmake   : >
             ENABLE_VIENNACL=OFF
             ENABLE_EIGEN=OFF
@@ -29,7 +29,7 @@ projects :
 
     - eccodes :
         git     : git@github.com:ecmwf/eccodes
-        version : master
+        version : develop
         cmake   : >
             ENABLE_ECCODES_THREADS=ON
             ENABLE_NETCDF=OFF
@@ -41,31 +41,31 @@ projects :
 
     - fckit :
         git     : git@github.com:ecmwf/fckit
-        version : master
+        version : develop
         require : eckit
         cmake   : FCKIT_ENABLE_FINAL=OFF
 
     - metkit :
         git     : git@github.com:ecmwf/metkit
-        version : feature/port-mars2grib
+        version : feature/mars2grib-new-encoding-for-statistics-rebased
         require : eckit
 
     - fdb5 :
         git     : git@github.com:ecmwf/fdb
-        version : master
+        version : develop
         require : eckit metkit
         cmake   : >
             ENABLE_FDB_TOOLS=ON
 
     - atlas :
         git     : git@github.com:ecmwf/atlas
-        version : master
+        version : develop
         require : eckit
         cmake   : ENABLE_TESSELATION=OFF ENABLE_TRANS=OFF ENABLE_CLANG_TIDY=OFF ENABLE_GRIDTOOLS_STORAGE=OFF
 
     - multio :
         git     : git@github.com:ecmwf/multio
-        version : feature/metkit-grib2-encoder
+        version : feature/fake-double-loop-rebased
         cmake   : >
             ENABLE_MULTIO_SERVER=ON
             ENABLE_LEGACY_IFSIO=ON
