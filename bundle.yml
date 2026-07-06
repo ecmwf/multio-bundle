@@ -15,6 +15,18 @@ projects :
         version : master
         bundle  : false
 
+    - eckit :
+        git     : git@github.com:ecmwf/eckit
+        version : master
+        cmake   : >
+            ENABLE_VIENNACL=OFF
+            ENABLE_EIGEN=OFF
+            ENABLE_ARMADILLO=OFF
+            ENABLE_CUDA=OFF
+            ENABLE_SANDBOX=OFF
+            ENABLE_MPI=ON
+            ENABLE_ECKIT_GEO=ON
+
     - eccodes :
         git     : git@github.com:ecmwf/eccodes
         version : master
@@ -26,18 +38,6 @@ projects :
             ECCODES_INSTALL_EXTRA_TOOLS=ON
             ECCODES_ENABLE_PYTHON2=OFF
             ECCODES_ENABLE_AEC=ON
-
-    - eckit :
-        git     : git@github.com:ecmwf/eckit
-        version : master
-        cmake   : >
-            ENABLE_VIENNACL=OFF
-            ENABLE_EIGEN=OFF
-            ENABLE_ARMADILLO=OFF
-            ENABLE_CUDA=OFF
-            ENABLE_SANDBOX=OFF
-            ENABLE_MPI=ON
-            ENABLE_ECKIT_GEO=OFF
 
     - fckit :
         git     : git@github.com:ecmwf/fckit
