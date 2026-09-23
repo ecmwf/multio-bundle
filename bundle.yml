@@ -15,18 +15,6 @@ projects :
         version : master
         bundle  : false
 
-    - eccodes :
-        git     : git@github.com:ecmwf/eccodes
-        version : master
-        cmake   : >
-            ENABLE_ECCODES_THREADS=ON
-            ENABLE_NETCDF=OFF
-            ENABLE_FORTRAN=ON
-            ENABLE_MEMFS=ON
-            ECCODES_INSTALL_EXTRA_TOOLS=ON
-            ECCODES_ENABLE_PYTHON2=OFF
-            ECCODES_ENABLE_AEC=ON
-
     - eckit :
         git     : git@github.com:ecmwf/eckit
         version : master
@@ -37,6 +25,20 @@ projects :
             ENABLE_CUDA=OFF
             ENABLE_SANDBOX=OFF
             ENABLE_MPI=ON
+
+    - eccodes :
+        git     : git@github.com:ecmwf/eccodes
+        version : master
+        require : eckit
+        cmake   : >
+            ENABLE_ECCODES_THREADS=ON
+            ENABLE_NETCDF=OFF
+            ENABLE_FORTRAN=ON
+            ENABLE_MEMFS=ON
+            ECCODES_INSTALL_EXTRA_TOOLS=ON
+            ECCODES_ENABLE_PYTHON2=OFF
+            ECCODES_ENABLE_AEC=ON
+            ENABLE_ECKIT_GEO=ON
 
     - fckit :
         git     : git@github.com:ecmwf/fckit
