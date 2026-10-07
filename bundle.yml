@@ -53,6 +53,11 @@ projects :
         git     : git@github.com:ACCORD-NWP/FALFILFA.git
         version : develop
 
+
+    - fa-encoder :
+        git     : git@github.com:ecmwf-ifs/fa-encoder.git
+        version : develop
+
     - fckit :
         git     : git@github.com:ecmwf/fckit
         version : develop
