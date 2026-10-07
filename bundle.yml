@@ -12,12 +12,32 @@ projects :
 
     - ecbuild :
         git     : git@github.com:ecmwf/ecbuild
-        version : master
+        version : develop
         bundle  : false
+
+
+    - fiat  :
+        git     : git@github.com:ecmwf-ifs/fiat
+        version : develop
+        cmake   : >
+                 FIAT_BUILD_SHARED_LIBS=OFF
+                 FIAT_ENABLE_TESTS=OFF
+
+    - eckit :
+        git     : git@github.com:ecmwf/eckit
+        version : develop
+        cmake   : >
+            ENABLE_VIENNACL=OFF
+            ENABLE_EIGEN=OFF
+            ENABLE_ARMADILLO=OFF
+            ENABLE_CUDA=OFF
+            ENABLE_SANDBOX=OFF
+            ENABLE_MPI=ON
+            ECKIT_ENABLE_ECKIT_GEO
 
     - eccodes :
         git     : git@github.com:ecmwf/eccodes
-        version : master
+        version : 2.48.0
         cmake   : >
             ENABLE_ECCODES_THREADS=ON
             ENABLE_NETCDF=OFF
@@ -26,55 +46,53 @@ projects :
             ECCODES_INSTALL_EXTRA_TOOLS=ON
             ECCODES_ENABLE_PYTHON2=OFF
             ECCODES_ENABLE_AEC=ON
+            ECCODES_ENABLE_ECKIT_GEO
 
-    - eckit :
-        git     : git@github.com:ecmwf/eckit
-        version : master
-        cmake   : >
-            ENABLE_VIENNACL=OFF
-            ENABLE_EIGEN=OFF
-            ENABLE_ARMADILLO=OFF
-            ENABLE_CUDA=OFF
-            ENABLE_SANDBOX=OFF
-            ENABLE_MPI=ON
+    
+    - falfilfa :
+        git     : git@github.com:ACCORD-NWP/FALFILFA.git
+        version : develop
 
     - fckit :
         git     : git@github.com:ecmwf/fckit
-        version : master
+        version : develop
         require : eckit
         cmake   : FCKIT_ENABLE_FINAL=OFF
 
     - ecflow-light :
         git     : git@github.com:ecmwf/ecflow-light
-        version : main
+        version : develop
         require : eckit
 
     - metkit :
         git     : git@github.com:ecmwf/metkit
-        version : master
-        require : eckit
+        version : develop
+        require : eckit eccodes
+        cmake   : >
+            METKIT_ENABLE_MARS2GRIB
+            METKIT_ENABLE_GRIB2MARS
 
     - fdb5 :
         git     : git@github.com:ecmwf/fdb
-        version : master
+        version : develop
         require : eckit metkit
         cmake   : >
             ENABLE_FDB_TOOLS=ON
 
     - atlas :
         git     : git@github.com:ecmwf/atlas
-        version : master
+        version : develop
         require : eckit
         cmake   : ENABLE_TESSELATION=OFF ENABLE_TRANS=OFF ENABLE_CLANG_TIDY=OFF ENABLE_GRIDTOOLS_STORAGE=OFF
 
     - mir :
         git     : git@github.com:ecmwf/mir
-        version : master
+        version : develop
         require : atlas
 
     - multio :
         git     : git@github.com:ecmwf/multio
-        version : master
+        version : develop
         cmake   : >
             ENABLE_MULTIO_SERVER=ON
             ENABLE_LEGACY_IFSIO=ON
@@ -82,5 +100,5 @@ projects :
 
     - atlas-orca :
         git     : git@github.com:ecmwf/atlas-orca
-        version : master
+        version : develop
         require : eckit
