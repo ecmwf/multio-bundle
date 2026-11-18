@@ -55,6 +55,7 @@ projects :
         git     : git@github.com:ecmwf/metkit
         version : develop
         require : eckit
+        cmake   : ENABLE_BUILD_GRIB2_TOOLS=ON
 
     - fdb5 :
         git     : git@github.com:ecmwf/fdb
